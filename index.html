@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Django-nopassword by relekang</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/relekang/django-nopassword">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/relekang/django-nopassword/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/relekang/django-nopassword/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Django-nopassword</h1>
+          <p>Django authentication backend using email confirmation instead of passwords</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/relekang">relekang</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>django-nopassword</h1>
+
+<p><a href="https://travis-ci.org/relekang/django-nopassword"><img src="https://travis-ci.org/relekang/django-nopassword.png" alt="Build Status"></a>
+<a href="https://crate.io/packages/django-nopassword/"><img src="https://pypip.in/v/django-nopassword/badge.png" alt="PyPi version"></a>
+<a href="https://crate.io/packages/django-nopassword/"><img src="https://pypip.in/d/django-nopassword/badge.png" alt="PyPi downloads"></a><br><strong>Disclaimer:</strong> I am writing this to learn more about custom authentication in django. Inspired by <a href="http://notes.xoxco.com/post/27999787765/is-it-time-for-password-less-login">Is it time for password-less login?</a> by <a href="http://twitter.com/benbrown">Ben Brown</a></p>
+
+<h2>Installation</h2>
+
+<p>Run this command to install django-nopassword</p>
+
+<pre><code>pip install django-nopassword
+</code></pre>
+
+<h3>Requirements</h3>
+
+<p>Django &gt;= 1.4</p>
+
+<p>South is not required but it is supported.</p>
+
+<h2>Usage</h2>
+
+<p>Add the app to installed apps</p>
+
+<div class="highlight"><pre><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="o">...</span>
+    <span class="s">'django_nopassword'</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+
+<p>Set the authentication backend to <em>EmailBackend</em></p>
+
+<pre><code>AUTHENTICATION_BACKENDS = ( 'django_nopassword.backends.EmailBackend', )
+</code></pre>
+
+<p>Add urls to your <em>urls.py</em></p>
+
+<div class="highlight"><pre><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">''</span><span class="p">,</span>
+    <span class="o">...</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r'^accounts/'</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">'django_nopassword.urls'</span><span class="p">)),</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+
+<h2>Settings</h2>
+
+<h5>LOGIN_CODE_TIMEOUT</h5>
+
+<p>default: <code>900</code> (15 minutes)<br>
+Defines how long a login code is valid in seconds.</p>
+
+<h3>Django settings used by django-nopassword</h3>
+
+<h5>SERVER_URL</h5>
+
+<p>default: <code>example.com</code></p>
+
+<h5>SERVER_EMAIL</h5>
+
+<p>default: <code>root@example.com</code></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-40757846-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
