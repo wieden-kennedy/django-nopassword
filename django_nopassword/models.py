@@ -10,10 +10,12 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
+from safedelete.models import SoftDeleteMixin
+
 from django_nopassword.utils import User, get_username
 
 
-class LoginCode(models.Model):
+class LoginCode(SoftDeleteMixin):
     user = models.ForeignKey(User, related_name='login_codes', editable=False, verbose_name=_('user'))
     code = models.CharField(max_length=20, editable=False, verbose_name=_('code'))
     timestamp = models.DateTimeField(editable=False)

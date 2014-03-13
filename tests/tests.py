@@ -123,3 +123,18 @@ class TestUsersJsonView(unittest.TestCase):
         request = self.factory.get('/accounts/users.json')
         response = views.users_json(request)
         self.assertEqual(response.status_code, 200)
+
+
+class TestSafeDelete(unittest.TestCase):
+
+    def test_is_enabled_in_LoginCode_model(self):
+        user = User.objects.create()
+        login_code = LoginCode.objects.create(user=user)
+
+        self.assertTrue(hasattr(login_code, 'deleted'))
+        self.assertFalse(login_code.deleted)
+
+        login_code.delete()
+
+        self.assertTrue(login_code.deleted)
+        self.assertFalse(LoginCode.objects.all())

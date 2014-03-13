@@ -1,1 +1,2 @@
 South
+django-safedelete==0.1.2
