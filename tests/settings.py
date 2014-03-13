@@ -25,6 +25,7 @@ INSTALLED_APPS = [
 
     'django_nopassword',
     'tests',
+    'south',
 ]
 AUTHENTICATION_BACKENDS = (
     'django_nopassword.backends.EmailBackend',

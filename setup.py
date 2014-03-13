@@ -14,6 +14,7 @@ setup(
     tests_require=[
         'django>=1.4',
         'mock==1.0.1',
+        'South==0.8.4',
     ],
     test_suite='runtests.runtests',
     include_package_data=True,

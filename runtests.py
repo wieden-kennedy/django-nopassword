@@ -5,9 +5,15 @@ from os.path import abspath, dirname
 from django.test.simple import DjangoTestSuiteRunner
 from django.test.utils import setup_test_environment
 
+from south.management.commands import patch_for_test_db_setup
 
 def runtests(*test_args, **kwargs):
     # setup_test_environment()
+
+    # This is needed because tables doesn't get created by south
+    # http://blogs.terrorware.com/geoff/2012/03/05/making-sure-south-migrations-get-run-when-using-djangos-create_test_db/
+    patch_for_test_db_setup()
+
     parent = dirname(abspath(__file__))
     sys.path.insert(0, parent)
     test_runner = DjangoTestSuiteRunner(
