@@ -138,3 +138,28 @@ class TestSafeDelete(unittest.TestCase):
 
         self.assertTrue(login_code.deleted)
         self.assertFalse(LoginCode.objects.all())
+
+
+class TestSettings(unittest.TestCase):
+
+    def test_NOPASSWORD_SOFTDELETE_not_set(self):
+        from safedelete.models import SoftDeleteMixin
+        from django_nopassword.models import LoginCode
+        logincode = LoginCode()
+
+        self.assertIsInstance(logincode, SoftDeleteMixin)
+
+    def test_NOPASSWORD_SOFTDELETE_is_False(self):
+        from django.db.models import Model
+        from django_nopassword.models import LoginCode
+        logincode = LoginCode()
+
+        self.assertIsInstance(logincode, Model)
+
+    @override_settings(NOPASSWORD_SOFTDELETE=True)
+    def test_NOPASSWORD_SOFTDELETE_is_True(self):
+        from safedelete.models import SoftDeleteMixin
+        from django_nopassword.models import LoginCode
+        logincode = LoginCode()
+
+        self.assertIsInstance(logincode, SoftDeleteMixin)
