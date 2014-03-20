@@ -55,6 +55,15 @@ default: `Login code`
 
 Sets Email Subject for Login Emails
 
+##### NOPASSWORD_SOFTDELETE
+default: `True`
+
+Sets the base class of `LoginCode`
+If `True` uses `SoftDeleteMixin`
+If `False` uses `django.db.models.Model`
+
+You can read further about `SoftDeleteMixin` ![here](https://github.com/makinacorpus/django-safedelete)
+
 ### Django settings used by django-nopassword
 ##### SERVER_URL
 default: `example.com`

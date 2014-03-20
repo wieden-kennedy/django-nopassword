@@ -10,10 +10,22 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
 
+from safedelete.models import SoftDeleteMixin
+
 from django_nopassword.utils import User, get_username
 
+# Choose which base class to use based on `settings.NOPASSWORD_SOFTDELETE`
+# If `False` use models.Model
+# If `True` user `SoftDeleteMixin`
+# Default is `True`
+DEFAULT_NOPASSWORD_SOFTDELETE = True
+if getattr(settings, 'NOPASSWORD_SOFTDELETE', DEFAULT_NOPASSWORD_SOFTDELETE):
+    logincode_base_class = SoftDeleteMixin
+else:
+    logincode_base_class = models.Model
 
-class LoginCode(models.Model):
+
+class LoginCode(logincode_base_class):
     user = models.ForeignKey(User, related_name='login_codes', editable=False, verbose_name=_('user'))
     code = models.CharField(max_length=20, editable=False, verbose_name=_('code'))
     timestamp = models.DateTimeField(editable=False)
