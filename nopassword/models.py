@@ -1,13 +1,17 @@
 # -*- coding: utf-8 -*-
 import os
 import hashlib
-from datetime import datetime
+try:
+    from django.utils import timezone as datetime
+except ImportError:
+    from datetime import datetime
 
 from django.conf import settings
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.auth import get_backends
 from django.utils.translation import ugettext_lazy as _
 from django.db import models
+
 
 from .utils import get_username, AUTH_USER_MODEL
 
